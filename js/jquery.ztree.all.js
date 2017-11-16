@@ -1603,7 +1603,7 @@
 
 			var zTreeTools = {
 				setting : setting,
-				addNodes : function(parentNode, index, newNodes, isSilent) {
+				addNodes : function(parentNode, index, newNodes, xNewNodes, isSilent) {
 					if (!parentNode) parentNode = null;
 					if (parentNode && !parentNode.isParent && setting.data.keep.leaf) return null;
 
@@ -1617,8 +1617,7 @@
 					}
 					if (!newNodes) return null;
 
-
-					var xNewNodes = tools.clone(tools.isArray(newNodes)? newNodes: [newNodes]);
+					xNewNodes = xNewNodes ? xNewNodes : tools.clone(tools.isArray(newNodes)? newNodes: [newNodes]);
 					function addCallback() {
 						view.addNodes(setting, parentNode, index, xNewNodes, (isSilent==true));
 					}
